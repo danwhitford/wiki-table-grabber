@@ -35,3 +35,10 @@ jobs:
 
     - name: Test
       run: go test -v .
+
+    - name: Upload artifact
+    uses: actions/upload-artifact@v2
+    with:
+      name: wiki-table-grabber
+      path: wiki-table-grabber
+    
