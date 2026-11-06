@@ -21,6 +21,12 @@ jobs:
       with:
         go-version-file: go.mod
 
+    - name: Check vendor directory is up to date
+      run: |
+        go mod vendor
+        git diff --exit-code -- vendor go.mod go.sum
+        test -z "$(git status --porcelain -- vendor)"
+
     - name: Vet
       run: go vet ./...
 
